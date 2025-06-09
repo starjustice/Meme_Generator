@@ -4,6 +4,7 @@ export const SPACING = {
   l: 12,
   m: 8,
   s: 6,
+  xs: 2,
 };
 
 export const CANVAS = {

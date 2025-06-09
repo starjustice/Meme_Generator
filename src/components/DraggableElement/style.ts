@@ -12,7 +12,7 @@ export const styles = makeStyles(({fonts, color, spacing, icons}) => ({
     minWidth: 70,
   },
   selectedBox: {
-    borderWidth: 0.2,
+    borderWidth: 0.5,
     borderColor: color.borderDrag,
     borderRadius: spacing.l,
   },
@@ -23,15 +23,14 @@ export const styles = makeStyles(({fonts, color, spacing, icons}) => ({
     position: 'absolute',
     backgroundColor: color.backgroundDark,
     borderRadius: spacing.l,
-    width: icons.l,
-    height: icons.l,
+    padding: spacing.xs,
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 2,
   },
 
-  copyIcon: {top: -20, left: -25},
-  deleteIcon: {top: -20, right: -25},
+  copyIcon: {top: -20, left: -17},
+  deleteIcon: {top: -20, right: -17},
 
   buttonText: {
     color: 'white',

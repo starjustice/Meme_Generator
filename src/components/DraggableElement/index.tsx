@@ -12,7 +12,7 @@ import {styles} from './style';
 import {Icon} from '../../core-ui';
 import {createTapHandler} from '../../helper';
 import {CanvasElement} from '../../types';
-import {clamp} from '../../utils';
+import {clamp, getStyles} from '../../utils';
 
 export type DraggableElementRef = {
   blur: () => void;
@@ -44,6 +44,8 @@ export const DraggableElement = forwardRef<DraggableElementRef, Props>(
       onSelect,
       isSelected = false,
     } = props;
+
+    const {icons} = getStyles();
 
     const [isEditing, setIsEditing] = useState(false);
     const [textValue, setTextValue] = useState(
@@ -218,14 +220,18 @@ export const DraggableElement = forwardRef<DraggableElementRef, Props>(
               {/* Note for tap not use TouchableOpacity because it overlap with other gesture drag and resize */}
               <GestureDetector gesture={createTapHandler(onCopy)}>
                 <Animated.View style={[styles.controlButton, styles.copyIcon]}>
-                  <Icon style={styles.buttonText} name="Copy" />
+                  <Icon style={styles.buttonText} name="Copy" size={icons.m} />
                 </Animated.View>
               </GestureDetector>
 
               <GestureDetector gesture={createTapHandler(onDelete)}>
                 <Animated.View
                   style={[styles.controlButton, styles.deleteIcon]}>
-                  <Icon style={styles.buttonText} name="Delete" />
+                  <Icon
+                    style={styles.buttonText}
+                    name="Delete"
+                    size={icons.m}
+                  />
                 </Animated.View>
               </GestureDetector>
 

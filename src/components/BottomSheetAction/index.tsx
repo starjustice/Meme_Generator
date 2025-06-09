@@ -1,10 +1,9 @@
 // src/components/BottomSheetAction.tsx
 import React, {forwardRef} from 'react';
-import RBSheet from 'react-native-raw-bottom-sheet';
 
 import {styles} from './style';
 
-import {Button} from '../../core-ui';
+import {BottomSheet, Button} from '../../core-ui';
 import {RBSheetRef} from '../../types';
 
 type Props = {
@@ -17,14 +16,7 @@ export const BottomSheetAction = forwardRef<RBSheetRef, Props>((props, ref) => {
   const {onAddText, onAddImage, onDeleteAll} = props;
 
   return (
-    <RBSheet
-      ref={ref}
-      height={240}
-      openDuration={250}
-      closeOnPressMask={true}
-      customStyles={{
-        container: styles.container,
-      }}>
+    <BottomSheet ref={ref}>
       <Button
         label="Add Text"
         onPress={onAddText}
@@ -43,6 +35,6 @@ export const BottomSheetAction = forwardRef<RBSheetRef, Props>((props, ref) => {
         style={styles.option}
         iconName="Delete"
       />
-    </RBSheet>
+    </BottomSheet>
   );
 });
