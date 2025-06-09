@@ -9,4 +9,8 @@ export const styles = makeStyles(({color, spacing}) => ({
     backgroundColor: color.backgroundDark,
     height: 70,
   },
+
+  buttonTextStyle: {
+    borderColor: color.buttonActive,
+  },
 }));

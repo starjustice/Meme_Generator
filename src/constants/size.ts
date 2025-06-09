@@ -1,4 +1,5 @@
 export const FONT_SIZES = {
+  xxl: 36,
   xl: 24,
   l: 18,
   m: 16,

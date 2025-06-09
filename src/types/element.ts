@@ -9,16 +9,17 @@ type ImageElement = BaseElement & {
   opacity?: number; // style image to change opacity
 };
 
-type TextElement = BaseElement & {
+type TextStyle = {
+  fontSize?: number;
+  color?: string;
+  fontWeight?: 'normal' | 'bold';
+  fontStyle?: 'normal' | 'italic';
+};
+export type TextElement = BaseElement & {
   type: 'text';
   content: string;
   // style element when use custom text
-  style?: {
-    fontSize?: number;
-    color?: string;
-    fontWeight?: 'normal' | 'bold';
-    fontStyle?: 'normal' | 'italic';
-  };
+  style?: TextStyle;
 };
 
 export type CanvasElement = ImageElement | TextElement;

@@ -1,4 +1,10 @@
-import React, {forwardRef, useImperativeHandle, useRef, useState} from 'react';
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {Image, LayoutChangeEvent, Text, TextInput} from 'react-native';
 import {Gesture, GestureDetector} from 'react-native-gesture-handler';
 import Animated, {
@@ -34,6 +40,7 @@ type Props = {
 export const DraggableElement = forwardRef<DraggableElementRef, Props>(
   (props, ref) => {
     const {
+      element,
       element: {type, content},
       initialX = 0,
       initialY = 0,
@@ -63,6 +70,26 @@ export const DraggableElement = forwardRef<DraggableElementRef, Props>(
     const startY = useSharedValue(0);
     const startWidth = useSharedValue(100);
     const startHeight = useSharedValue(100);
+
+    // Memoize the extracted style properties for a text element.
+    // This avoids unnecessary recalculations unless `type` or `element` changes.
+    const textStyle = useMemo(() => {
+      if (type !== 'text') {
+        return undefined;
+      }
+
+      if ('style' in element) {
+        const {fontSize, color, fontWeight, fontStyle} = element.style || {};
+
+        return {
+          fontSize,
+          color,
+          fontWeight,
+          fontStyle,
+        };
+      }
+      return undefined;
+    }, [type, element]);
 
     useImperativeHandle(ref, () => ({
       // Method to blur the input (end editing mode)
@@ -204,12 +231,12 @@ export const DraggableElement = forwardRef<DraggableElementRef, Props>(
                 value={textValue}
                 onChangeText={setTextValue}
                 onBlur={handleBlur}
-                style={[styles.text, styles.input]}
+                style={[styles.text, styles.input, textStyle]}
                 placeholder="Type here..."
                 multiline
               />
             ) : (
-              <Text style={styles.text}>{textValue}</Text>
+              <Text style={[styles.text, textStyle]}>{textValue}</Text>
             )
           ) : (
             <Image source={content} style={styles.image} resizeMode="contain" />

@@ -6,7 +6,6 @@ export const styles = makeStyles(({fonts, color, spacing, icons}) => ({
   },
   text: {
     fontSize: fonts.l,
-    fontWeight: 'bold',
     color: color.textNormal,
     padding: spacing.s,
     minWidth: 70,

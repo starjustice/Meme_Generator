@@ -7,6 +7,8 @@ const BASE_COLORS = {
   vibrantBlue: '#007AFF',
   calmBlue: '#4EA8DE',
   accentBlue: '#2c68f5',
+
+  warmYellow: '#fcbc0d',
 };
 
 export const FUNCTIONAL_COLORS = {
@@ -18,10 +20,24 @@ export const FUNCTIONAL_COLORS = {
   backgroundLighterCanvas: BASE_COLORS.paleGray,
 
   buttonBase: BASE_COLORS.calmBlue,
+  buttonActive: BASE_COLORS.warmYellow,
   resize: BASE_COLORS.vibrantBlue,
 
   iconLight: BASE_COLORS.pureWhite,
   iconDark: BASE_COLORS.vibrantBlue,
 
   textNormal: BASE_COLORS.pureBlack,
+
+  sliderTrack: BASE_COLORS.pureWhite,
+};
+
+export const TEXT_COLOR = {
+  black: '#000000',
+  white: '#FFFFFF',
+  red: '#E53935',
+  blue: '#1E88E5',
+  green: '#43A047',
+  yellow: '#FBC02D',
+  purple: '#8E24AA',
+  orange: '#FB8C00',
 };

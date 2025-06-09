@@ -1,97 +1,85 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📸 Meme Generator App
 
-# Getting Started
+A customizable Meme Generator mobile application built with **React Native (bare workflow)**. Users can choose or take a background image, add and edit text or image, and export their memes as JPG file.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## ✨ Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- Select image from gallery as meme background
+- Add draggable and editable text or image elements
+- Customize text style: font size, color, bold, italic
+- Duplicate or delete elements easily
+- Save memes as images to your device
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 💠 Tools & Libraries Used
 
-# OR using Yarn
-yarn start
+| Package                                                                                                       | Description                                                 | Docs                                                                           |
+| ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [`@react-native-community/slider`](https://github.com/callstack/react-native-slider)                          | Native slider component for adjusting values like font size | [Docs](https://github.com/callstack/react-native-slider)                       |
+| [`@react-native-camera-roll/camera-roll`](https://github.com/react-native-cameraroll/react-native-cameraroll) | Save images to Device                                       | [Docs](https://react-native-cameraroll.github.io/react-native-cameraroll/)     |
+| [`react-native-image-picker`](https://github.com/react-native-image-picker/react-native-image-picker)         | Select images from the gallery                              | [Docs](https://github.com/react-native-image-picker/react-native-image-picker) |
+| [`react-native-raw-bottom-sheet`](https://github.com/nysamnang/react-native-raw-bottom-sheet)                 | Smooth bottom sheet UI for tool panels                      | [Docs](https://github.com/nysamnang/react-native-raw-bottom-sheet)             |
+| [`react-native-reanimated`](https://docs.swmansion.com/react-native-reanimated/)                              | Gesture and animation support                               | [Docs](https://docs.swmansion.com/react-native-reanimated/)                    |
+| [`react-native-svg`](https://github.com/software-mansion/react-native-svg)                                    | SVG rendering support for React Native                      | [Docs](https://github.com/software-mansion/react-native-svg)                   |
+| [`react-native-svg-transformer`](https://github.com/kristerkari/react-native-svg-transformer)                 | Load SVG files as React components                          | [Docs](https://github.com/kristerkari/react-native-svg-transformer)            |
+| [`react-native-view-shot`](https://github.com/gre/react-native-view-shot)                                     | Capture React Native views as images                        | [Docs](https://github.com/gre/react-native-view-shot)                          |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/meme-generator.git
+cd meme-generator
 ```
 
-## Step 2: Build and run your app
+### 2. Install dependencies
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+yarn install
 ```
 
-### iOS
+or
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+npm install
 ```
 
-Then, and every time you update your native dependencies, run:
+### 3. iOS setup
 
-```sh
-bundle exec pod install
+```bash
+cd ios
+pod install
+cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### 4. Run the app
 
-```sh
-# Using npm
-npm run ios
+```bash
+# For Android
+npx react-native run-android
+or
+npm android
 
-# OR using Yarn
-yarn ios
+# For iOS
+npx react-native run-ios
+or
+npm ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+---
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 📷 Example
 
-## Step 3: Modify your app
+_coming soon_
 
-Now that you have successfully run the app, let's make changes!
+---
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## 🧑‍💻 Author
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Maintained by [starjustice](https://github.com/starjustice)
