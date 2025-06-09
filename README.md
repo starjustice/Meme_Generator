@@ -76,7 +76,11 @@ npm ios
 
 ## 📷 Example
 
-_coming soon_
+
+
+https://github.com/user-attachments/assets/c47e7ac0-5163-4a0b-8ad1-4c8a33a45b09
+
+
 
 ---
 
