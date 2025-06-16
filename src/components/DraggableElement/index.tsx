@@ -91,6 +91,8 @@ export const DraggableElement = forwardRef<DraggableElementRef, Props>(
       return undefined;
     }, [type, element]);
 
+    const imageStyle = element.type === 'image' ? element.opacity : 1;
+
     useImperativeHandle(ref, () => ({
       // Method to blur the input (end editing mode)
       blur: () => {
@@ -239,7 +241,11 @@ export const DraggableElement = forwardRef<DraggableElementRef, Props>(
               <Text style={[styles.text, textStyle]}>{textValue}</Text>
             )
           ) : (
-            <Image source={content} style={styles.image} resizeMode="contain" />
+            <Image
+              source={content}
+              style={[styles.image, {opacity: imageStyle}]}
+              resizeMode="contain"
+            />
           )}
 
           {isSelected && (

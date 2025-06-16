@@ -17,7 +17,12 @@ import {
   DraggableElementRef,
 } from '../../components';
 import {createTapHandler, imagePickerHandler} from '../../helper';
-import {CanvasElement, RBSheetRef, TextElement} from '../../types';
+import {
+  CanvasElement,
+  ImageElement,
+  RBSheetRef,
+  TextElement,
+} from '../../types';
 import {getStyles} from '../../utils';
 
 const initialPosition = 60;
@@ -169,7 +174,7 @@ export default function MemeGenerator() {
    * Safely clones the elements array and merges new styles with existing ones.
    */
   const updateSelectedElementStyle = (
-    updatedStyle: Partial<TextElement['style']>,
+    updatedStyle: Partial<TextElement['style'] | ImageElement['opacity']>,
   ) => {
     if (selectedIndex === null) {
       closeSheetStyle();
@@ -180,13 +185,24 @@ export default function MemeGenerator() {
       const newElements = [...prev]; // Clone the elements array to maintain immutability
 
       // Only apply if the selected element is a text type
-      if (newElements[selectedIndex]?.type === 'text') {
+      if (
+        newElements[selectedIndex]?.type === 'text' &&
+        typeof updatedStyle === 'object'
+      ) {
         newElements[selectedIndex] = {
           ...newElements[selectedIndex],
           style: {
             ...newElements[selectedIndex].style,
             ...updatedStyle,
           },
+        };
+      } else if (
+        newElements[selectedIndex]?.type === 'image' &&
+        typeof updatedStyle === 'number'
+      ) {
+        newElements[selectedIndex] = {
+          ...newElements[selectedIndex],
+          opacity: updatedStyle,
         };
       }
       return newElements;
@@ -230,6 +246,14 @@ export default function MemeGenerator() {
     updateSelectedElementStyle({color});
   };
 
+  const handleOpacity = (opacity: number) => {
+    const el = selectedElement;
+    if (!el || el.type !== 'image') {
+      return;
+    }
+    updateSelectedElementStyle(opacity);
+  };
+
   return (
     <SafeAreaView style={styles.flex}>
       <View style={styles.flex}>
@@ -271,7 +295,8 @@ export default function MemeGenerator() {
         onOpenSheet={openSheet}
         onChangeTemplate={handleChangeTemplate}
         onExport={handleExport}
-        isSelected={isTextElement}
+        isSelectedText={isTextElement}
+        isSelectedImage={selectedElement?.type === 'image'}
         onStyle={openSheetStyle}
       />
 
@@ -290,7 +315,8 @@ export default function MemeGenerator() {
         onFontStyle={handleFontStyleToggle}
         onFontSize={handleFontSizeChange}
         onFontColor={handleFontColorChange}
-        selectedElement={isTextElement ? selectedElement : undefined}
+        onOpacityImage={handleOpacity}
+        selectedElement={selectedElement}
       />
     </SafeAreaView>
   );

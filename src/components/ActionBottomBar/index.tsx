@@ -10,18 +10,26 @@ type Props = {
   onOpenSheet: () => void;
   onExport: () => void;
   onChangeTemplate: () => void;
-  isSelected?: boolean;
+  isSelectedText?: boolean;
+  isSelectedImage?: boolean;
   onStyle?: () => void;
 };
 
 export function BottomActionBar(props: Props) {
-  const {onOpenSheet, onExport, onChangeTemplate, isSelected, onStyle} = props;
+  const {
+    onOpenSheet,
+    onExport,
+    onChangeTemplate,
+    isSelectedText,
+    isSelectedImage,
+    onStyle,
+  } = props;
   const {color} = getStyles();
   return (
     <View style={styles.container}>
-      {isSelected ? (
+      {isSelectedText || isSelectedImage ? (
         <Button
-          label="Text Style"
+          label={isSelectedImage ? 'Image Style' : 'Text Style'}
           onPress={onStyle}
           variant="outline"
           style={styles.buttonTextStyle}
@@ -40,7 +48,7 @@ export function BottomActionBar(props: Props) {
         onPress={onExport}
         variant="filled"
       />
-      {!isSelected ? (
+      {!isSelectedText && !isSelectedImage ? (
         <Button
           label="Template"
           iconName="Template"

@@ -3,7 +3,7 @@ type BaseElement = {
   initialY?: number;
 };
 
-type ImageElement = BaseElement & {
+export type ImageElement = BaseElement & {
   type: 'image';
   content: {uri: string};
   opacity?: number; // style image to change opacity
