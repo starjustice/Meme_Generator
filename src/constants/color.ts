@@ -32,8 +32,8 @@ export const FUNCTIONAL_COLORS = {
 };
 
 export const TEXT_COLOR = {
-  black: '#000000',
-  white: '#FFFFFF',
+  black: '#000',
+  white: '#FFF',
   red: '#E53935',
   blue: '#1E88E5',
   green: '#43A047',

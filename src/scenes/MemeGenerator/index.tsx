@@ -29,7 +29,7 @@ const initialPosition = 60;
 const space = 10;
 
 export default function MemeGenerator() {
-  const {canvasSize} = getStyles();
+  const {canvasSize, color: themeColor} = getStyles();
 
   const [elements, setElements] = useState<Array<CanvasElement>>([]);
   const [backgroundImage, setBackgroundImage] = useState<
@@ -85,6 +85,9 @@ export default function MemeGenerator() {
         content: 'Type Here',
         initialX: initialPosition,
         initialY: initialPosition,
+        style: {
+          color: themeColor.textNormal,
+        },
       },
     ]);
     closeSheet();
@@ -207,7 +210,7 @@ export default function MemeGenerator() {
       }
       return newElements;
     });
-    closeSheetStyle();
+    // closeSheetStyle();
   };
 
   //  Toggles the font weight of the selected text element between 'bold' and 'normal'

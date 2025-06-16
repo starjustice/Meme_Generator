@@ -1,6 +1,6 @@
 import Slider from '@react-native-community/slider';
 import React, {forwardRef} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {StyleProp, Text, TouchableOpacity, View, ViewStyle} from 'react-native';
 
 import {TEXT_COLOR} from '../../constants';
 import {BottomSheet, Button} from '../../core-ui';
@@ -30,6 +30,22 @@ export const BottomSheetStyle = forwardRef<RBSheetRef, Props>(
     ref,
   ) => {
     const {fonts, color} = getStyles();
+
+    const isTextElement = selectedElement?.type === 'text';
+    const textStyle = isTextElement ? selectedElement.style : undefined;
+
+    const boldButtonStyle =
+      textStyle?.fontWeight === 'bold' ? styles.activeStyle : undefined;
+
+    const italicButtonStyle =
+      textStyle?.fontStyle === 'italic' ? styles.activeStyle : undefined;
+
+    const getColorCircleStyle = (textColor: string): StyleProp<ViewStyle> => [
+      styles.colorCircle,
+      {backgroundColor: textColor},
+      textStyle?.color === textColor && styles.activeColor,
+    ];
+
     return (
       <BottomSheet ref={ref}>
         <View style={styles.container}>
@@ -53,13 +69,13 @@ export const BottomSheetStyle = forwardRef<RBSheetRef, Props>(
               {/* Font size */}
               <View style={styles.sliderWrapper}>
                 <Text style={styles.fontSizeLabel}>{`Font Size ${Math.round(
-                  selectedElement?.style?.fontSize ?? fonts.l,
+                  textStyle?.fontSize ?? fonts.l,
                 )} pt`}</Text>
                 <Slider
                   style={styles.slider}
                   minimumValue={fonts.s}
                   maximumValue={fonts.xxl}
-                  value={selectedElement?.style?.fontSize ?? fonts.l}
+                  value={textStyle?.fontSize ?? fonts.l}
                   onSlidingComplete={onFontSize}
                   minimumTrackTintColor={color.sliderTrack}
                   maximumTrackTintColor={color.sliderTrack}
@@ -71,6 +87,7 @@ export const BottomSheetStyle = forwardRef<RBSheetRef, Props>(
                   label="Bold"
                   onPress={onFontVariant}
                   iconName="BoldText"
+                  style={boldButtonStyle}
                   labelStyle={styles.bold}
                 />
 
@@ -78,6 +95,7 @@ export const BottomSheetStyle = forwardRef<RBSheetRef, Props>(
                   label="Italic"
                   onPress={onFontStyle}
                   iconName="ItalicText"
+                  style={italicButtonStyle}
                   labelStyle={styles.italic}
                 />
               </View>
@@ -86,7 +104,7 @@ export const BottomSheetStyle = forwardRef<RBSheetRef, Props>(
                 {Object.values(TEXT_COLOR).map(textColor => (
                   <TouchableOpacity
                     key={textColor}
-                    style={[styles.colorCircle, {backgroundColor: textColor}]}
+                    style={getColorCircleStyle(textColor)}
                     onPress={() => onFontColor(textColor)}
                   />
                 ))}

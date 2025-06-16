@@ -38,6 +38,20 @@ export const styles = makeStyles(({color, spacing, fonts}) => ({
     borderWidth: 1,
     borderColor: color.backgroundCanvas,
   },
-  italic: {fontStyle: 'italic'},
-  bold: {fontWeight: 'bold'},
+  activeColor: {
+    borderWidth: 2,
+    borderColor: color.backgroundCanvas,
+    transform: [{scale: 1.2}],
+  },
+  italic: {
+    fontStyle: 'italic',
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+  activeStyle: {
+    backgroundColor: color.buttonActive,
+    padding: spacing.s,
+    borderRadius: spacing.l,
+  },
 }));
