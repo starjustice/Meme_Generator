@@ -32,15 +32,13 @@ export function CanvasView(props: Props) {
   const translateY = useSharedValue(0);
   const prevTranslationX = useSharedValue(0);
   const prevTranslationY = useSharedValue(0);
-  const startX = useSharedValue(0);
-  const startY = useSharedValue(0);
 
   // Gesture to handle dragging (panning) the element around
   const panGesture = Gesture.Pan()
     .onStart(() => {
       // When pan starts, save the current translation position as the start point
-      startX.value = translateX.value;
-      startY.value = translateY.value;
+      prevTranslationX.value = translateX.value;
+      prevTranslationY.value = translateY.value;
     })
     .onUpdate(event => {
       // Calculate max allowed translation (drag) distance on X and Y axis
